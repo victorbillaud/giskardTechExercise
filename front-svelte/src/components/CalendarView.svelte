@@ -1,13 +1,22 @@
 <script>
-    import Calendar from '@event-calendar/core';
+    import { onMount } from "svelte";
+    import {getAvailabilities} from "../lib/handler";
 
-    let plugins = []
-    let options = {
-        view: 'timeGridWeek',
-        events: [
-            // your list of events
-        ]
-    };
+    $: availabilities = [];
+
+    onMount(async () => {
+        availabilities = await getAvailabilities();
+    });
 </script>
 
-<Calendar {plugins} {options} />
+<main>
+    <h1></h1>
+    <ul>
+        {#each availabilities as availability}
+            <li>{availability.start}</li>
+        {/each}
+    </ul>
+</main>
+
+
+
