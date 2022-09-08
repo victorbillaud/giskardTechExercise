@@ -5,7 +5,7 @@
 
 <main>
   <div class="container-left">
-	<h1>Find a slots</h1>
+    <h1>Find a slots</h1>
     <img src="/62a0938795a46b56e6dca5c3_Giskard_Turtle_Lab.png" alt="" />
   </div>
   <div class="container-right">
@@ -19,8 +19,8 @@
     padding: 1em;
     max-width: 240px;
     margin: 0 auto;
-	display: flex;
-	height: 100vh;
+    display: flex;
+    height: 100vh;
   }
 
   h1 {
@@ -30,22 +30,22 @@
   }
 
   .container-left {
-	width: 40%;
-	display: flex;
-	flex-direction: column;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     text-align: start;
     align-items: center;
   }
 
   .container-left img {
-	max-width: 100%;
+    max-width: 100%;
   }
 
   .container-right {
-	width: 60%;
-	display: flex;
-	flex-direction: column;
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     text-align: start;
     align-items: center;
