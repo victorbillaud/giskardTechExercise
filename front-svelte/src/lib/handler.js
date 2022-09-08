@@ -7,3 +7,12 @@ token.subscribe(value => {
   console.log(value);
   localStorage.setItem("token", value);
 });
+
+export const getAvailabilities = async (data) => {
+    try {
+      const response = await Api.get("/availabilities", null, null);
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
+  };
