@@ -9,14 +9,29 @@ module.exports = {
                     res.status(500).send('Error retrieving availabilities');
                 } else {
                     results.forEach(result => {
-                        if (availabilities.find(x => x.day === new Date(result.start).getDay()).foo)
-                        availabilities.push({
-                            day: new Date(result.start).getDay(),
-                            start: result.start,
-                            end: result.end
-                        });
+                        const date = new Date(result.start).toDateString();
+                        if (availabilities.find(x => x.day === date)){
+                            availabilities[availabilities.findIndex(x => x.day === date)].slots.push(
+                                {
+                                    id: result.id,
+                                    start: result.start,
+                                    end: result.end
+                                }
+                            );
+                        }else{
+                            availabilities.push({
+                                day: new Date(result.start).toDateString(),
+                                slots : [
+                                    {
+                                        id: result.id,
+                                        start: result.start,
+                                        end: result.end
+                                    }
+                                ]
+                            });
+                        }
                     });
-                    res.status(200).json(results);
+                    res.status(200).json(availabilities);
                 }
             });
         } catch (error) {
