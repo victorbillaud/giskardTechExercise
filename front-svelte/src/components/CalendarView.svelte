@@ -10,7 +10,7 @@
 </script>
 
 <main>
-    <h1></h1>
+    <h1>Find a slot</h1>
     <ul>
         {#each availabilities as availability}
             <li>{availability.start}</li>
