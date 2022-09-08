@@ -8,6 +8,14 @@ module.exports = {
                 if (err) {
                     res.status(500).send('Error retrieving availabilities');
                 } else {
+                    results.forEach(result => {
+                        if (availabilities.find(x => x.day === new Date(result.start).getDay()).foo)
+                        availabilities.push({
+                            day: new Date(result.start).getDay(),
+                            start: result.start,
+                            end: result.end
+                        });
+                    });
                     res.status(200).json(results);
                 }
             });
