@@ -3,6 +3,7 @@ const db = require('../db');
 module.exports = {
     addOneReservations: (req, res) => {
         console.log(req.body);
+        res.send('ok');
         // try {
         //     db.query('INSERT INTO reservations SET ?', req.body, (err, results) => {
         //         if (err) {

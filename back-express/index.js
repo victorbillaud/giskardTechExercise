@@ -1,5 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+const fileUpload = require('express-fileupload');
+
 
 require('dotenv').config();
 
@@ -19,6 +21,7 @@ const reservationsServices = require('./lib/reservations.js');
 const app = express();
 app.use(express.urlencoded({ extended: false }));   
 app.use(express.json());
+app.use(fileUpload())
 app.use(express.static(__dirname + '/public'));
 app.use(cors())
 
