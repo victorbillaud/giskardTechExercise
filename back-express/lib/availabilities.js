@@ -44,7 +44,7 @@ module.exports = {
                 if (err) {
                     res.status(500).send('Error retrieving availability');
                 } else {
-                    res.status(200).json(results);
+                    res.status(200).json(results[0]);
                 }
             });
         } catch (error) {
