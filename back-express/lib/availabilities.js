@@ -37,5 +37,18 @@ module.exports = {
         } catch (error) {
             console.log(error);
         }
+    },
+    getOneAvailability: (req, res) => {
+        try {
+            db.query('SELECT * FROM availabilities WHERE id = ?', [req.query.id], (err, results) => {
+                if (err) {
+                    res.status(500).send('Error retrieving availability');
+                } else {
+                    res.status(200).json(results[0]);
+                }
+            });
+        } catch (error) {
+            console.log(error);
+        }
     }
 }

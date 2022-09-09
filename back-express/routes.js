@@ -1,5 +1,6 @@
 const
     AVAILABILITIES = '/availabilities',
+    AVAILABILITY = '/availability';
     CREATE_AVAILABILITY = '/availabilities/create',
     DELETE_AVAILABILITY = '/availabilities/delete',
     RESERVATIONS = '/reservations',
@@ -8,6 +9,7 @@ const
 
 module.exports = {
     AVAILABILITIES,
+    AVAILABILITY,
     CREATE_AVAILABILITY,
     DELETE_AVAILABILITY,
     RESERVATIONS,
