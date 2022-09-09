@@ -26,7 +26,14 @@
     border: 1px solid #ccc;
     border-radius: 10px;
     margin-right: 0.5rem;
-    background-color: rgba(22, 58, 48, 0.5);
+    background-color: rgba(22, 58, 48, 0.3);
     color: white;
+    font-family: var(--font-petrona);
+    transition: background-color 0.2s ease-in-out;
   }
+
+  .slot:hover {
+    background-color: rgba(22, 58, 48, 0.5);
+  }
+
 </style>

@@ -26,13 +26,12 @@
     padding: 1rem;
     border: none;
     border-radius: 10px;
-    margin-bottom: 1rem;
-    box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.2);
   }
 
   h2 {
     margin-top: 10px;
     margin-bottom: 1rem;
+    font-family: var(--font-petrona);
   }
 
   .slots {

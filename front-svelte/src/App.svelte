@@ -8,8 +8,7 @@
 
 <main>
   <div class="container-left">
-    <h1>Find a slots</h1>
-    <img src="/62a0938795a46b56e6dca5c3_Giskard_Turtle_Lab.png" alt="" />
+    <img src="/62983fa8ef716259c397a57d_logo.svg" width="300" alt="" />
   </div>
   <div class="container-right">
     <Router>
