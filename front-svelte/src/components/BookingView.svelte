@@ -1,6 +1,18 @@
 <script>
-  import { Router, Route, Link, useNavigate } from "svelte-navigator";
+    import { onMount } from "svelte";
+  import { Router, Route, Link, useNavigate, useLocation } from "svelte-navigator";
+  import { getOneAvailability } from "../lib/handler";
   const navigate = useNavigate();
+  const location = useLocation();
+  
+  export let id;
+  $: console.log($location);
+  $: slot = null;
+
+  onMount(async () => {
+    slot = await getOneAvailability($location.pathname.split("/")[2]);
+    console.log(slot);
+  });
 
   let title = "";
   let email = "";

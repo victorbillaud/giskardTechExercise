@@ -9,10 +9,19 @@ token.subscribe(value => {
 });
 
 export const getAvailabilities = async (data) => {
-    try {
-      const response = await Api.get("/availabilities", null, null);
-      return response;
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  try {
+    const response = await Api.get("/availabilities", null, null);
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getOneAvailability = async (id) => {
+  try {
+    const response = await Api.get(`/availability?id=${id}`, null, null);
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+}

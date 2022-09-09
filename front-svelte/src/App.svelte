@@ -16,7 +16,7 @@
       <Route path="/">
         <CalendarView />
       </Route>
-      <Route path="book/*">
+      <Route path="book/*id">
         <BookingView />
       </Route>
     </Router>
