@@ -3,7 +3,6 @@
   export let slots;
 
   import Slot from "./Slot.svelte";
-
 </script>
 
 <main>
@@ -16,10 +15,9 @@
 
   <div class="slots">
     {#each slots as slot}
-        <Slot {...slot} />
-  {/each}
+      <Slot {...slot} />
+    {/each}
   </div>
-  
 </main>
 
 <style>
@@ -32,7 +30,7 @@
     box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.2);
   }
 
-  h2{
+  h2 {
     margin-top: 10px;
     margin-bottom: 1rem;
   }
@@ -45,7 +43,5 @@
   }
 
   .slot {
-
   }
-
 </style>

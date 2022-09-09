@@ -1,6 +1,9 @@
 <script>
+  import { Router, Route, Link } from "svelte-navigator";
+
   export let name;
   import CalendarView from "./components/CalendarView.svelte";
+  import BookingView from "./components/BookingView.svelte";
 </script>
 
 <main>
@@ -9,18 +12,24 @@
     <img src="/62a0938795a46b56e6dca5c3_Giskard_Turtle_Lab.png" alt="" />
   </div>
   <div class="container-right">
-    <CalendarView />
+    <Router>
+      <Route path="/">
+        <CalendarView />
+      </Route>
+      <Route path="book/*">
+        <BookingView />
+      </Route>
+    </Router>
   </div>
 </main>
 
 <style>
   main {
     text-align: center;
-    padding: 1em;
     max-width: 240px;
     margin: 0 auto;
     display: flex;
-    height: 100vh;
+    height: 100%;
   }
 
   h1 {

@@ -1,9 +1,9 @@
 <script>
   import { onMount } from "svelte";
-import App from "../App.svelte";
+  import App from "../App.svelte";
   import { getAvailabilities } from "../lib/handler";
   import Day from "./Day.svelte";
-import Slot from "./Slot.svelte";
+  import Slot from "./Slot.svelte";
 
   $: availabilities = [];
 
@@ -20,8 +20,14 @@ import Slot from "./Slot.svelte";
 </main>
 
 <style>
-    main{
-        width: 50%;
-        margin: auto;
-    }
+  main {
+    width: 50%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: start;
+    align-items: center;
+  }
 </style>
