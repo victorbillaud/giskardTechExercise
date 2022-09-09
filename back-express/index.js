@@ -5,6 +5,7 @@ require('dotenv').config();
 
 const {
     AVAILABILITIES,
+    AVAILABILITY,
     CREATE_AVAILABILITY,
     DELETE_AVAILABILITY,
     RESERVATIONS,
@@ -22,6 +23,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(cors())
 
 app.get(AVAILABILITIES, availabilitiesServices.getAvailabilities);
+app.get(AVAILABILITY, availabilitiesServices.getOneAvailability);
 
 app.listen(process.env.PORT, () => {
     console.log(`Example app listening on port ${process.env.PORT}`)
