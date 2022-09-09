@@ -32,11 +32,14 @@
   });
 
   async function createBooking() {
+    const startDate = new Date(slot.start);
+    const endDate = new Date(slot.end);
+    console.log();
     const response = await createReservation({
       title: title,
       email: email,
-      start: new Date(slot.start).setHours(start),
-      end: new Date(slot.end).setHours(end),
+      start: new Date(slot.start).setHours(start.split(":")[0], start.split(":")[1]),
+      end: new Date(slot.end).setHours(end.split(":")[0], end.split(":")[1])
     });
     response
       .then((result) => {
