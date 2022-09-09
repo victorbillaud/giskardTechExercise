@@ -7,7 +7,8 @@
     useNavigate,
     useLocation,
   } from "svelte-navigator";
-  import { getOneAvailability } from "../lib/handler";
+  import { getOneAvailability, createReservation } from "../lib/handler";
+
   const navigate = useNavigate();
   const location = useLocation();
   $: slot = null;
@@ -29,6 +30,20 @@
     start = timeInterval[0];
     end = timeInterval[timeInterval.length - 1];
   });
+
+  async function createBooking() {
+    const response = await createReservation({
+      title: title,
+      email: email,
+      start: new Date(slot.start).setHours(start),
+      end: new Date(slot.end).setHours(end),
+    });
+    response
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {});
+  }
 
   function makeArrayOfTimes(startHour, endHour) {
     const times = [];
@@ -97,7 +112,7 @@
       <button
         class="btn btn-primary"
         on:click={() => {
-          console.log("booked");
+          createBooking();
         }}>Book</button
       >
     </Route>
@@ -198,5 +213,4 @@
     font-style: italic;
     font-weight: 800;
   }
-
 </style>

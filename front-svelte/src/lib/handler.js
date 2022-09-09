@@ -25,3 +25,12 @@ export const getOneAvailability = async (id) => {
     console.error(error);
   }
 }
+
+export const createReservation = async (data) => {
+  try {
+    const response = await Api.post("/reservations/create", data, null);
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+}
