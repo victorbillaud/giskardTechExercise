@@ -36,16 +36,15 @@
     const endDate = new Date(slot.end);
     console.log();
     const response = await createReservation({
+      id: slot.id,
       title: title,
       email: email,
       start: new Date(slot.start).setHours(start.split(":")[0], start.split(":")[1]),
       end: new Date(slot.end).setHours(end.split(":")[0], end.split(":")[1])
     });
-    response
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((err) => {});
+    if(response.state){
+      navigate("/book/success");
+    }
   }
 
   function makeArrayOfTimes(startHour, endHour) {
@@ -64,11 +63,18 @@
 </script>
 
 <main>
-  <button class="back-button" title="Go back" on:click={() => navigate(-1)}>
-    <img src="/arrow-left.svg" alt="" />
-  </button>
   <Router>
+    <Route path="/success">
+      <h1>Success!</h1>
+      <div class="success">
+        <p>Your booking has been created.</p>
+        <Link to="/">Go back to the home page</Link>
+      </div>
+    </Route>
     <Route path=":id" let:params>
+      <button class="back-button" title="Go back" on:click={() => navigate(-1)}>
+        <img src="/arrow-left.svg" alt="" />
+      </button>
       <h2>Book a slot</h2>
       <h3>
         {new Date(slot?.start).toLocaleString("default", {
@@ -160,6 +166,10 @@
 
   .form p {
     font-size: 1.2em;
+  }
+
+  .success {
+    font-family: var(--font-petrona);
   }
 
   h3 {

@@ -3,6 +3,7 @@
   export let slots;
 
   import Slot from "./Slot.svelte";
+
 </script>
 
 <main>

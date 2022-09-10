@@ -27,7 +27,7 @@ app.use(cors())
 
 app.get(AVAILABILITIES, availabilitiesServices.getAvailabilities);
 app.get(AVAILABILITY, availabilitiesServices.getOneAvailability);
-app.post(CREATE_RESERVATION, reservationsServices.addOneReservations);
+app.post(CREATE_RESERVATION, reservationsServices.addOneReservations, availabilitiesServices.splitOneAvailability);
 
 app.listen(process.env.PORT, () => {
     console.log(`Example app listening on port ${process.env.PORT}`)
