@@ -15,51 +15,58 @@
   $: timeInterval = [];
   $: start = "";
   $: end = "";
+  let title = "";
+  let email = "";
 
   onMount(async () => {
+    // Get the slot data from the back
     slot = await getOneAvailability($location.pathname.split("/")[2]);
-    console.log(
-      slot,
-      new Date(slot.start).getHours(),
-      new Date(slot.end).getHours()
-    );
+    // Create an array of time intervals (15 minutes in this case)
     timeInterval = makeArrayOfTimes(
       new Date(slot.start).getHours(),
       new Date(slot.end).getHours()
     );
+    // Set the start and end time of the slot to the first and last time interval
     start = timeInterval[0];
     end = timeInterval[timeInterval.length - 1];
   });
 
   async function createBooking() {
-    const startDate = new Date(slot.start);
-    const endDate = new Date(slot.end);
-    console.log();
+    if (title == "" || email == "") {
+      alert("Please fill in all the fields");
+      return;
+    }
+    // Create a new reservation with a call to the back
     const response = await createReservation({
       id: slot.id,
       title: title,
       email: email,
       start: new Date(slot.start).setHours(start.split(":")[0], start.split(":")[1]),
-      end: new Date(slot.end).setHours(end.split(":")[0], end.split(":")[1])
+      end: new Date(slot.end).setHours(end.split(":")[0], end.split(":")[1]),
     });
-    if(response.state){
-      navigate("/book/success");
-    }
+    // Redirect with the right page depends of return statement
+    response.state ? navigate("/book/success") : navigate("/book/error"); 
   }
 
+  // Function to create an array of time intervals
   function makeArrayOfTimes(startHour, endHour) {
     const times = [];
-    for (let hour = startHour; hour < endHour; hour++) {
+    if (startHour == endHour) {
       for (let minute = 0; minute < 60; minute += 15) {
-        times.push(`${hour}:${minute < 10 ? "0" : ""}${minute}`);
+        times.push(`${startHour}:${minute < 10 ? "0" : ""}${minute}`);
       }
+      return times;
+    } else {
+      for (let hour = startHour; hour < endHour; hour++) {
+        for (let minute = 0; minute < 60; minute += 15) {
+          times.push(`${hour}:${minute < 10 ? "0" : ""}${minute}`);
+        }
+      }
+      times.push(`${endHour}:00`);
+      console.log(times);
+      return times;
     }
-    times.push(`${endHour}:00`);
-    return times;
   }
-
-  let title = "";
-  let email = "";
 </script>
 
 <main>
@@ -68,6 +75,13 @@
       <h1>Success!</h1>
       <div class="success">
         <p>Your booking has been created.</p>
+        <Link to="/">Go back to the home page</Link>
+      </div>
+    </Route>
+    <Route path="/fail">
+      <h1>Error...</h1>
+      <div class="success">
+        <p>Your booking wasn't created, please retry.</p>
         <Link to="/">Go back to the home page</Link>
       </div>
     </Route>
@@ -93,7 +107,7 @@
         </select>
         <p>end at</p>
         <select name="end" id="" bind:value={end}>
-          {#each timeInterval.slice(timeInterval.findIndex((time) => time === start)) as time}
+          {#each timeInterval.slice(timeInterval.findIndex((time) => time === start) + 1) as time}
             <option value={time}>{time}</option>
           {/each}
         </select>
