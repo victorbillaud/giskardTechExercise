@@ -19,18 +19,16 @@ The backend app require a `.env` file with this attribute
 PORT=3000
 API_URL=localhost:3000
 SQL_HOST=localhost
-SQL_USER=sqlusername
-SQL_PASSWD=sqlpassword
-SQL_DATABASE=NameOfDatabase (ex: GiskardCalendarExercise)
+SQL_USER=giskard
+SQL_PASSWD=giskard
+SQL_DATABASE=GiskardCalendarExercise
 ```
 
 If you change the port number please change it in the `api.js` file in [frontend][front-svelte] app.
 
 ## 2. Run
 ### 2.1 Backend
-First of all, you must install all node package by tipping `npm i` in your terminal at the root of this folder `/back-express`.
-
-Now you just need to type `node index.js` in your terminal and the application start.
+You just need to type `docker-compose up` inside the `back-express` folder for starting the backend app.
 
 ### 2.2 Frontend
 
